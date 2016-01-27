@@ -26,7 +26,7 @@
 % Oxygen:       'O2'
 %
 % optional input:
-% pCO2      pCO2 in uatm (or ppm)  This is used to calculate dilution due
+% pCO2      pCO2 in uatm (or ppmv)  This is used to calculate dilution due
 %           to addded CO2 - assumes xCO2 + xO2 are a constant
 % -------------------------------------------------------------------------
 % OUTPUTS:

@@ -100,9 +100,8 @@ end
 ph2oveq = vpress(S,T);
 ph2ov = rh.*ph2oveq;
 slpc = (slp-ph2ov)./(1-ph2oveq);
-slpd = slp-ph2ov;
 
-[D,Sc] = gasmoldiff(S,T,gas);
+[~,Sc] = gasmoldiff(S,T,gas);
 Geq = gasmoleq(S,T,gas);
     
 switch upper(param)

@@ -20,10 +20,10 @@
 % sol       Henry's Law solubility in mol m-3 atm-1
 %
 % -------------------------------------------------------------------------
-% USGAGE:
+% USAGE:
 % -------------------------------------------------------------------------
 % [KH_O2] = gasmolsol(35,20,'O2')
-% KH_O2 = 1.1289
+% KH_O2 = 1.1293
 %
 % Author: David Nicholson dnicholson@whoi.edu
 % Also see: gasmolfract.m, gasmoleq.m

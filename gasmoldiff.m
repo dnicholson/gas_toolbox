@@ -22,7 +22,7 @@
 %   D = diffusion coefficient   [m^2/s] 
 %   Sc = Schmidt number
 % 
-% AUTHOR:  David Nicholson :: dnicholson@whoi.edu
+% AUTHOR:  David Nicholson : dnicholson@whoi.edu
 %
 % REFERENCE:
 %    He, Ne, Kr, Xe freshwater values from Jahne et al., 1987.
