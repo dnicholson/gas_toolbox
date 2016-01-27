@@ -1,0 +1,1 @@
+To use the functions in gas_toolbox, you must also download and install the Gibbs-SeaWater (GSW) Oceanographic Toolbox, Version 3.04 (20th December, 2013) or newer. Download at: http://teos-10.org/software.htm
