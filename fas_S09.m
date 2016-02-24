@@ -1,6 +1,5 @@
-% [Fd, Fc, Fp, Deq, k] = fas_S09(C,u10,S,T,slp,gas,rh)
-% Function to calculate air-sea gas exchange flux using Stanley 09
-% parameterization
+% fas_S09: Function to calculate air-sea gas exchange flux using Stanley
+% 2009 parameterization
 %
 % USAGE:-------------------------------------------------------------------
 % [Fd, Fc, Fp, Deq, k] = fas_S09(C,u10,S,T,slp,gas,rh)

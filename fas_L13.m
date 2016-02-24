@@ -1,4 +1,5 @@
-% Function to calculate air-sea fluxes with Liang 2013 parameterization
+% fas_L13: Function to calculate air-sea fluxes with Liang 2013
+% parameterization
 %
 % USAGE:-------------------------------------------------------------------
 % [Fd, Fc, Fp, Deq, k] = fas_L13(C,u10,S,T,slp,gas,rh)
@@ -42,8 +43,8 @@
 % OUTPUTS:-----------------------------------------------------------------
 %
 % Fd:   Surface gas flux                              (mol m-2 s-1)
-% Fp:   Flux from partially collapsing large bubbles  (mol m-2 s-1)
 % Fc:   Flux from fully collapsing small bubbles      (mol m-2 s-1)
+% Fp:   Flux from partially collapsing large bubbles  (mol m-2 s-1)
 % Deq:  Equilibrium supersaturation                   (unitless (%sat/100))
 % k:    Diffusive gas transfer velocity               (m s-1)
 %
