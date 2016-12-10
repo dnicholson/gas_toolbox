@@ -27,7 +27,8 @@
 % param:    abbreviation for parameterization:
 %               Sw07 = Sweeney et al. 2007
 %               S09 = Stanley et al. 2009
-%               N11 = Nicholson et al. 2011 
+%               N11 = Nicholson et al. 2011
+%               N16 = Nicholson et al. 2016
 %               L13 = Liang et al. 2013 
 % rh:       relative humidity expressed as the fraction of saturation 
 %           (0.5 = 50% RH).
@@ -95,6 +96,8 @@ switch upper(param)
         [Fd, Fc, Fp, Deq, k] = fas_S09(C,u10,S,T,slp,gas,rh);
     case 'N11'
         [Fd, Fc, Fp, Deq, k] = fas_N11(C,u10,S,T,slp,gas,rh);
+    case 'N16'
+        [Fd, Fc, Fp, Deq, k] = fas_N16(C,u10,S,T,slp,gas,rh);
     case 'SW07'
         [Fd, Fc, Fp, Deq, k] = fas_Sw07(C,u10,S,T,slp,gas,rh);
     case 'L13'
