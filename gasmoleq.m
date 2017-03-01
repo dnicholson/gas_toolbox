@@ -72,25 +72,28 @@ SA = SP.*35.16504./35;
 CT = gsw_CT_from_pt(SA,pt);
 rho = gsw_sigma0(SA,CT)+1000;
 
+gasn = lower(gas);
 % calculate equilibrium solubility gas concentration in micro-mol/kg
-if strcmpi(gas, 'He')
+if strcmpi(gasn, 'he')
     sol_umolkg = gsw_Hesol_SP_pt(SP,pt);
-elseif strcmpi(gas, 'Ne')
+elseif strcmpi(gasn, 'ne')
     % bug in gsw_Nesol... v. 3.05 prior Sept 23, 2015 
     % the bug returned solubility in nmol kg-1 instead of umol kg-1
     sol_umolkg = Nesol(SP,pt);
-elseif strcmpi(gas, 'Ar')
+elseif strcmpi(gasn, 'ar')
     sol_umolkg = gsw_Arsol_SP_pt(SP,pt);
-elseif strcmpi(gas, 'Kr')
+elseif strcmpi(gasn, 'kr')
     sol_umolkg = gsw_Krsol_SP_pt(SP,pt);
-elseif strcmpi(gas, 'Xe')
+elseif strcmpi(gasn, 'xe')
     sol_umolkg = Xesol(SP,pt);
-elseif strcmpi(gas, 'N2')
+elseif strcmpi(gasn, 'n2')
     sol_umolkg = gsw_N2sol_SP_pt(SP,pt);
-elseif strcmpi(gas, 'O2')
+elseif strcmpi(gasn, 'o2')
     sol_umolkg = gsw_O2sol_SP_pt(SP,pt);
+elseif strcmpi(gasn, 'n2o')
+    sol_umolkg = gsw_N2Osol_SP_pt(SP,pt);
 else
-    error('Gas name must be He, Ne, Ar, Kr, Xe, O2 or N2');
+    error('Gas name must be He, Ne, Ar, Kr, Xe, O2, N2O or N2');
 end
 
 % convert from micro-mol/kg to mol/m3

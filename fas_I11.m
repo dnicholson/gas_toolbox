@@ -3,27 +3,26 @@
 %
 % USAGE:-------------------------------------------------------------------
 %  
-% [Fd, Fc, Fp, Deq, k] = fas_N11(C,u10,S,T,slp,gas,rh)
-% [Fd, Fc, Fp, Deq, k] = fas_N11(0.01410,5,35,10,1,'Ar',0.9)
+% [Fd, Fc, Fp, Deq, k] = fas_I11(C,u10,S,T,slp,gas,rh)
+% [Fd, Fc, Fp, Deq, k] = fas_I11(0.01410,5,35,10,1,'Ar',1)
 %
-% > Fd = -4.4860e-09
-% > Fc = 3.1432e-10
-% > Fp = 9.0980e-11
-% > Deq = 1.6882e-03
-% > k = 1.7365e-05
+% > Fd = -5.9209e-09
+% > Fc = 4.5048e-09
+% > Fp = 0
+% > Deq = 0.0151
+% > k = 2.1533e-05
 %
 % DESCRIPTION:-------------------------------------------------------------
 %
 % Calculate air-sea fluxes and steady-state supersaturation based on:
-% Nicholson, D., S. Emerson, S. Khatiwala, R. C. Hamme. (in press) 
-%   An inverse approach to estimate bubble-mediated air-sea gas flux from 
-%   inert gas measurements.  Proceedings on the 6th International Symposium
-%   on Gas Transfer at Water Surfaces.  Kyoto University Press.
+% Ito, T., R. C. Hamme, and S. Emerson (2011), Temporal and spatial 
+%   variability of noble gas tracers in the North Pacific, J. Geophys. 
+%   Res., 116, C08039, doi:10.1029/2010JC006828.
 %
 % Fc = Ainj * slpc * Xg * u3
-% Fp = Aex * slpc * Geq * D^n * u3
+% Fp = 0
 %
-% where u3 = (u-2.27)^3 (and zero for  u < 2.27)
+% where u3 = ((u-2.27)./(10-2.27))^3 (and zero for  u < 2.27)
 %
 % Explanation of slpc:
 %      slpc = (observed dry air pressure)/(reference dry air pressure)
@@ -59,8 +58,7 @@
 %               If not provided, it will be automatically set to 0.8.
 %
 % OUTPUTS:-----------------------------------------------------------------
-% Fd:   Surface air-sea diffusive flux based on 
-%       Sweeney et al. 2007                           [mol m-2 s-1]
+% Fd:   Surface air-sea diffusive flux                [mol m-2 s-1]
 % Fc:   Injection bubble flux (complete trapping)     [mol m-2 s-1]
 % Fp:   Exchange bubble flux (partial trapping)       [mol m-2 s-1]
 % Deq:  Steady-state supersaturation                  [unitless (%sat/100)]
@@ -69,20 +67,19 @@
 % Note: Total air-sea flux is Ft = Fd + Fc + Fp
 %
 % REFERENCE:---------------------------------------------------------------
-% Nicholson, D., S. Emerson, S. Khatiwala, R. C. Hamme (2011)
-%   An inverse approach to estimate bubble-mediated air-sea gas flux from 
-%   inert gas measurements.  Proceedings on the 6th International Symposium
-%   on Gas Transfer at Water Surfaces.  Kyoto University Press.
+% Ito, T., R. C. Hamme, and S. Emerson (2011), Temporal and spatial 
+%   variability of noble gas tracers in the North Pacific, J. Geophys. 
+%   Res., 116, C08039, doi:10.1029/2010JC006828.
 %
 % AUTHORS:-----------------------------------------------------------------
 % David Nicholson dnicholson@whoi.edu
 % Cara Manning cmanning@whoi.edu
 % Woods Hole Oceanographic Institution
-% Version 2.0 September 2015
+% Version 05 February 2017
 %
 % COPYRIGHT:---------------------------------------------------------------
 %
-% Copyright 2015 David Nicholson and Cara Manning 
+% Copyright 2017 David Nicholson  
 %
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License, which 
@@ -90,12 +87,14 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [Fd, Fc, Fp, Deq, k] = fas_N11(C,u10,S,T,slp,gas,varargin)
+function [Fd, Fc, Fp, Deq, k] = fas_I11(C,u10,S,T,slp,gas,varargin)
 
-% 1.5 factor converts from average winds to instantaneous - see N11 ref.
-Ainj = 2.51e-9./1.5;
-Aex = 1.15e-5./1.5;
-
+% see Appendix A in Ito et al. 2011
+Ainj = 9.1e-9; % m s-1
+alph = 9.3e-5; % m s-1
+Aex = 0;
+R = 8.314;
+Patm = 1.01325e5; % 1 atm in Pa
 
 % if humidity is not provided, set to 0.8 for all values
 if nargin > 6
@@ -115,11 +114,12 @@ slpd = slp-ph2ov;
 Geq = gasmoleq(S,T,gas);
 
 % calculate wind speed term for bubble flux
-u3 = (u10-2.27).^3;
+u3 = ((u10-2.27)./(10-2.27)).^3;
 u3(u3 < 0) = 0;
 
-k = kgas(u10,Sc,'Sw07');
+k = alph.*(u10./10).^2.*(Sc./660).^-0.5;
 Fd = -k.*(C-slpc.*Geq);
-Fc = Ainj.*slpd.*gasmolfract(gas).*u3;
+Fc = (Ainj./(R.*(T+273.15))).*slpd.*Patm.*gasmolfract(gas).*u3;
 Fp = Aex.*slpc.*Geq.*D.^0.5.*u3;
 Deq = ((Fp+Fc)./k)./Geq;
+

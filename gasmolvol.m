@@ -19,23 +19,32 @@
 %==========================================================================
 
 function vmol = gasmolvol(gas)
-if strcmpi(gas,'He')
-    vmol = 22.426;
-elseif strcmpi(gas,'Ne')
-    vmol = 22.425;
-elseif strcmpi(gas,'Ar')
-    vmol = 22.393;
-elseif strcmpi(gas,'Kr')
-    vmol = 22.352;
-elseif strcmpi(gas,'Xe')
-    vmol = 22.258;
-elseif strcmpi(gas,'O2')
-    vmol = 22.392;
-elseif strcmpi(gas,'N2')
-    vmol = 22.404;
-elseif strcmpi(gas,'CO2')
-    % from http://cdiac.ornl.gov/ftp/cdiac74/sop24.pdf
-    vmol = 22.414.*0.99498;
-else
-    error('Gas name must be Ne, Ar, Kr, Xe, N2, or O2');
+gasn = lower(gas);
+switch gasn
+    case 'he'
+        vmol = 22.426;
+    case 'ne'
+        vmol = 22.425;
+    case 'ar'
+        vmol = 22.393;
+    case 'kr'
+        vmol = 22.352;
+    case 'xe'
+        vmol = 22.258;
+    case 'o2'
+        vmol = 22.392;
+    case 'n2'
+        vmol = 22.404;
+    case 'co2'
+        % from http://cdiac.ornl.gov/ftp/cdiac74/sop24.pdf
+        vmol = 22.414.*0.99498;
+    case 'ch4'
+        vmol = 22.360;
+    case 'h2'
+        vmol = 22.428;
+    case 'n2o'
+        vmol = 22.243;
+    otherwise
+        error('Gas name must be He, Ne, Ar, Kr, Xe, N2, O2, CO2, CH4, H2 or N2O');
+end
 end               

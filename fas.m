@@ -101,9 +101,11 @@ switch upper(param)
     case 'SW07'
         [Fd, Fc, Fp, Deq, k] = fas_Sw07(C,u10,S,T,slp,gas,rh);
     case 'L13'
-        [Fd, Fp, Fc, Deq, k] = fas_L13(C,u10,S,T,slp,gas,rh);
+        [Fd, Fc, Fp, Deq, k] = fas_L13(C,u10,S,T,slp,gas,rh);
+    case 'I11'
+        [Fd, Fc, Fp, Deq, k] = fas_I11(C,u10,S,T,slp,gas,rh);
     otherwise
-        error('Only S09, N11, Sw07 and L13 are supported. See fas_Fd for more parameterizations.');
+        error('Only S09, N11, I11, Sw07 and L13 are supported. See fas_Fd for more parameterizations.');
 end
 
 
