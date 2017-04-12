@@ -100,7 +100,7 @@ Patm = 1.01325e5; % 1 atm in Pa
 if nargin > 6
     rhum = varargin{1};
 else
-    rhum = 0.8;
+    rhum = 1;
 end
 
 % slpc = (observed dry air pressure)/(reference dry air pressure)

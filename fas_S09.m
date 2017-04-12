@@ -104,7 +104,7 @@ diffexp=2/3; betaexp=1;
 
 % if humidity is not provided, set to 0.8 for all values
 if nargin == 6
-    rh =0.8.*ones(size(C));
+    rh =1.*ones(size(C));
 end;
 
 % -------------------------------------------------------------------------

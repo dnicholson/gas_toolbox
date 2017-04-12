@@ -71,7 +71,7 @@ function [Fd, Fc, Fp, Deq, k] = fas_Sw07(C,u10,S,T,slp,gas,rh)
 
 % if humidity is not provided, set to 0.8 for all values
 if nargin == 6
-    rh = 0.8.*ones(size(C));
+    rh = 1.*ones(size(C));
 end;
 
 % Equilibrium gas conc is referenced to 1 atm total air pressure, 

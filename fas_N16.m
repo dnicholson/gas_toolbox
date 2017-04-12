@@ -106,7 +106,7 @@ Aex = 2.19e-6;
 if nargin > 6
     rhum = varargin{1};
 else
-    rhum = 0.8;
+    rhum = 1;
 end
 
 % slpc = (observed dry air pressure)/(reference dry air pressure)

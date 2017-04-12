@@ -84,7 +84,7 @@ if nargin == 8
         error('Relative humidity must be 0 <= rh <= 1');
     end
 else
-    rh =0.8.*ones(size(C));
+    rh =1.*ones(size(C));
 end
 
 % slpc = (observed dry air pressure)/(reference dry air pressure)

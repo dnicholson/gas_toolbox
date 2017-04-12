@@ -87,7 +87,7 @@ atm2Pa = 1.01325e5; % Pascals per atm
 
 % if humidity is not provided, set to 0.8 for all values
 if nargin == 6
-    rh =0.8.*ones(size(C));
+    rh =ones(size(C));
 end
 
 ph2oveq = vpress(SP,pt);
