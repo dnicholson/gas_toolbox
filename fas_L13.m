@@ -105,7 +105,7 @@ pslpc = (pslp - ph2ov)./(1 - ph2oveq);
 SA = SP.*35.16504./35;
 CT = gsw_CT_from_pt(SA,pt);
 rhow = gsw_sigma0(SA,CT)+1000;
-rhoa = 1.0;
+rhoa = 1.225;
 
 lam = 13.3;
 A = 1.3;
