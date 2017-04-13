@@ -31,9 +31,9 @@
 % observed conditions. Equilibrium gas concentration in gasmoleq is
 % referenced to 1 atm total air pressure, including saturated water vapor
 % (RH=1), but observed sea level pressure is usually different from 1 atm,
-% and humidity in the marine boundary layer is usually less than
-% saturation. Thus, the observed sea level pressure of each gas will
-% usually be different from the reference.
+% and humidity in the marine boundary layer can be less than saturation.
+% Thus, the observed sea level pressure of each gas will usually be
+% different from the reference.
 %
 % INPUTS:------------------------------------------------------------------
 % 
@@ -56,7 +56,7 @@
 %
 % varargin: optional but recommended arguments
 %       rhum: relative humidity as a fraction of saturation (0.5 = 50% RH).
-%               If not provided, it will be automatically set to 0.8.
+%             If not provided, it will be automatically set to 1 (100% RH).
 %
 % OUTPUTS:-----------------------------------------------------------------
 % Fd:   Surface air-sea diffusive flux based on 
@@ -78,11 +78,11 @@
 % David Nicholson dnicholson@whoi.edu
 % Cara Manning cmanning@whoi.edu
 % Woods Hole Oceanographic Institution
-% Version 2.0 September 2015
+% Version 12 April 2017
 %
 % COPYRIGHT:---------------------------------------------------------------
 %
-% Copyright 2015 David Nicholson and Cara Manning 
+% Copyright 2017 David Nicholson and Cara Manning 
 %
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License, which 
@@ -97,7 +97,7 @@ Ainj = 2.51e-9./1.5;
 Aex = 1.15e-5./1.5;
 
 
-% if humidity is not provided, set to 0.8 for all values
+% if humidity is not provided, set to 1 for all values
 if nargin > 6
     rhum = varargin{1};
 else

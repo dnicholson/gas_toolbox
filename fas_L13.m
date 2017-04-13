@@ -4,11 +4,11 @@
 % USAGE:-------------------------------------------------------------------
 % [Fd, Fc, Fp, Deq, k] = fas_L13(C,u10,S,T,slp,gas,rh)
 % [Fd, Fc, Fp, Deq, k] = fas_L13(0.01410,5,35,10,1,'Ar',0.9)
-%   >Fd = -4.7561e-09
-%   >Fc = 9.1960e-11
-%   >Fp = -4.8013e-10
-%   >Deq = 0.0011
-%   >k = 1.8411e-05
+%   >Fd = -5.2641e-09
+%   >Fc = 1.3605e-10
+%   >Fp = -6.0093e-10
+%   >Deq = 0.0014
+%   >k = 2.0377e-05
 %
 % DESCRIPTION:-------------------------------------------------------------
 %
@@ -28,7 +28,7 @@
 %       string, e.g. 'He'
 % rh:   relative humidity as a fraction of saturation (0.5 = 50% RH)
 %       rh is an optional but recommended argument. If not provided, it
-%       will be automatically set to 0.8.
+%       will be automatically set to 1 (100% RH).
 %
 %       Code    Gas name        Reference
 %       ----   ----------       -----------
@@ -61,11 +61,11 @@
 % Written by David Nicholson dnicholson@whoi.edu
 % Modified by Cara Manning cmanning@whoi.edu
 % Woods Hole Oceanographic Institution
-% Version: 2.0 // September 2015
+% Version: 12 April 2017
 %
 % COPYRIGHT:---------------------------------------------------------------
 %
-% Copyright 2015 David Nicholson and Cara Manning 
+% Copyright 2017 David Nicholson and Cara Manning 
 %
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License, which 
@@ -85,7 +85,7 @@ atm2Pa = 1.01325e5; % Pascals per atm
 % Calculate water vapor pressure and adjust sea level pressure
 % -------------------------------------------------------------------------
 
-% if humidity is not provided, set to 0.8 for all values
+% if humidity is not provided, set to 1 for all values
 if nargin == 6
     rh =ones(size(C));
 end

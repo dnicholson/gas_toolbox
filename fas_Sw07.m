@@ -15,7 +15,21 @@
 % Sweeney, C., Gloor, E., Jacobson, A. R., Key, R. M., McKinley, G.,
 % Sarmiento, J. L., & Wanninkhof, R. (2007). Constraining global air?sea
 % gas exchange for CO2 with recent bomb 14C measurements. Global
-% Biogeochemical Cycles, 21(2).
+% Biogeochemical Cycles, 21(2). 
+%
+% The Sweeney et al. (2007) parameterization does not explicitly include
+% any terms for bubble-mediated gas exchange.
+%
+% Explanation of slpc:
+%      slpc = (observed dry air pressure)/(reference dry air pressure)
+% slpc is a pressure correction factor to convert from reference to
+% observed conditions. Equilibrium gas concentration in gasmoleq is
+% referenced to 1 atm total air pressure, including saturated water vapor
+% (RH=1), but observed sea level pressure is usually different from 1 atm,
+% and humidity in the marine boundary layer can be less than saturation. 
+% Thus, the observed sea level pressure of each gas will usually be
+% different from the reference.
+%
 %
 % INPUTS:------------------------------------------------------------------
 % 
@@ -28,7 +42,7 @@
 %       string, e.g. 'He'
 % rh:   relative humidity as a fraction of saturation (0.5 = 50% RH)
 %       rh is an optional but recommended argument. If not provided, it
-%       will be automatically set to 0.8.
+%       will be automatically set to 1 (100% RH).
 %
 % OUTPUTS:-----------------------------------------------------------------
 % Fd:   Diffusive air-sea flux                        (mol m-2 s-1)
@@ -49,13 +63,13 @@
 % Biogeochemical Cycles, 21(2).
 %
 % AUTHOR:---------------------------------------------------------------
-% Cara Manning cmanning@whoi.edu
+% Cara Manning (cmanning@whoi.edu) and David Nicholson
 % Woods Hole Oceanographic Institution
-% Version: August 2015
+% Version: 12 April 2017
 %
 % COPYRIGHT:---------------------------------------------------------------
 %
-% Copyright 2015 Cara Manning 
+% Copyright 2017 Cara Manning and David Nicholson
 %
 % Licensed under the Apache License, Version 2.0 (the "License"); you may 
 % not use this file except in compliance with the License, which is
@@ -69,7 +83,7 @@ function [Fd, Fc, Fp, Deq, k] = fas_Sw07(C,u10,S,T,slp,gas,rh)
 % Check for humidity, calculate dry pressure
 % -------------------------------------------------------------------------
 
-% if humidity is not provided, set to 0.8 for all values
+% if humidity is not provided, set to 1 for all values
 if nargin == 6
     rh = 1.*ones(size(C));
 end;

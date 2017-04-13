@@ -29,9 +29,9 @@
 % observed conditions. Equilibrium gas concentration in gasmoleq is
 % referenced to 1 atm total air pressure, including saturated water vapor
 % (RH=1), but observed sea level pressure is usually different from 1 atm,
-% and humidity in the marine boundary layer is usually less than
-% saturation. Thus, the observed sea level pressure of each gas will
-% usually be different from the reference.
+% and humidity in the marine boundary layer can be less than saturation. 
+% Thus, the observed sea level pressure of each gas will usually be
+% different from the reference.
 %
 % INPUTS:------------------------------------------------------------------
 % C:    gas concentration (mol/m^3)
@@ -44,7 +44,7 @@
 % rh:   relative humidity in the marine boundary layer as a fraction of
 %       saturation (0.5 = 50% RH).
 %       rh is an optional but recommended argument. If not provided, it
-%       will be automatically set to 0.8.
+%       will be automatically set to 1 (100% RH).
 %
 % OUTPUTS:-----------------------------------------------------------------
 % Fd:   Diffusive air-sea flux                        (mol m-2 s-1)
@@ -69,12 +69,12 @@
 % AUTHOR:------------------------------------------------------------------
 %
 % Cara Manning (cmanning@whoi.edu) Woods Hole Oceanographic Institution
-% Version: 2.0 // January 2016
+% Version: 12 April 2017
 % Checked and approved by Rachel Stanley on September 20, 2015.
 %
 % COPYRIGHT:---------------------------------------------------------------
 %
-% Copyright 2015 Cara Manning 
+% Copyright 2017 Cara Manning 
 %
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License, which 
@@ -102,7 +102,7 @@ diffexp=2/3; betaexp=1;
 % Check for humidity
 % -------------------------------------------------------------------------
 
-% if humidity is not provided, set to 0.8 for all values
+% if humidity is not provided, set to 1 for all values
 if nargin == 6
     rh =1.*ones(size(C));
 end;

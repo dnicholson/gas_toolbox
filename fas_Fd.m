@@ -32,7 +32,7 @@
 % rh:       relative humidity expressed as the fraction of saturation 
 %           (0.5 = 50% RH).
 %           rh is an optional but recommended argument. If not provided, it
-%           will be set to 0.8 within the function.
+%           will be set to 1 (100% RH) within the function.
 %
 %       Code    Gas name        Reference
 %       ----   ----------       -----------
@@ -52,9 +52,9 @@
 % observed conditions. Equilibrium gas concentration in gasmoleq is
 % referenced to 1 atm total air pressure, including saturated water vapor
 % (RH=1), but observed sea level pressure is usually different from 1 atm,
-% and humidity in the marine boundary layer is usually less than
-% saturation. Thus, the observed sea level pressure of each gas will
-% usually be different from the reference.
+% and humidity in the marine boundary layer can be less than saturation.
+% Thus, the observed sea level pressure of each gas will usually be
+% different from the reference.
 % -------------------------------------------------------------------------
 % OUTPUTS:
 % -------------------------------------------------------------------------
@@ -65,10 +65,11 @@
 % AUTHOR:
 % -------------------------------------------------------------------------
 % Author: Cara Manning cmanning@whoi.edu 
+% Version: 12 April 2017
 %
 % COPYRIGHT:---------------------------------------------------------------
 %
-% Copyright 2015 David Nicholson and Cara Manning 
+% Copyright 2017 David Nicholson and Cara Manning 
 %
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License, which 
@@ -78,7 +79,7 @@
 
 function [Fd, k] = fas_Fd(C,u10,S,T,slp,gas,param,rh)
 
-% if humidity is not provided, set to 0.8 for all values
+% if humidity is not provided, set to 1 for all values
 if nargin == 8
     if mean(rh) < 0 || mean(rh) > 1
         error('Relative humidity must be 0 <= rh <= 1');

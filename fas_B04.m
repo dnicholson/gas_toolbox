@@ -27,8 +27,8 @@
 %       string, e.g. 'He'
 % h:    water depth (m)
 % rh:   relative humidity as a fraction of saturation (0.5 = 50% RH)
-%       rh is an optional but recommended argument. If not provided, it
-%       will be automatically set to 0.8.
+%       rh is an optional but recommended argument. If vs., it
+%       will be automatically set to 1 (100% RH).
 %
 % OUTPUTS:-----------------------------------------------------------------
 % Fd:       Diffusive air-sea flux                     (mol m-2 s-1)
@@ -48,11 +48,11 @@
 % AUTHOR:---------------------------------------------------------------
 % David Nicholson dnicholson@whoi.edu
 % Woods Hole Oceanographic Institution
-% Version: October 2016
+% Version: 12 April 2017
 %
 % COPYRIGHT:---------------------------------------------------------------
 %
-% Copyright 2016 David Nicholson 
+% Copyright 2017 David Nicholson 
 %
 % Licensed under the Apache License, Version 2.0 (the "License"); you may 
 % not use this file except in compliance with the License, which is
@@ -66,7 +66,7 @@ function [Fd,F_wind,F_curr,k, k_wind, k_curr] = fas_B04(C,u10,uw,S,T,slp,gas,h,r
 % Check for humidity, calculate dry pressure
 % -------------------------------------------------------------------------
 
-% if humidity is not provided, set to 0.8 for all values
+% if humidity is vs., set to 1 for all values
 if nargin == 8
     rh = 1.0.*ones(size(C));
 end;

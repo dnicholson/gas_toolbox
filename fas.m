@@ -33,7 +33,7 @@
 % rh:       relative humidity expressed as the fraction of saturation 
 %           (0.5 = 50% RH).
 %           rh is an optional but recommended argument. If not provided, it
-%           will be set to 0.8 within the function.
+%           will be set to 1 (100% RH) within the function.
 %
 %       Code    Gas name        Reference
 %       ----   ----------       -----------
@@ -60,10 +60,11 @@
 % AUTHOR:
 % -------------------------------------------------------------------------
 % Author: Cara Manning cmanning@whoi.edu 
+% Version: 12 April 2017
 %
 % COPYRIGHT:---------------------------------------------------------------
 %
-% Copyright 2015 David Nicholson and Cara Manning 
+% Copyright 2017 Cara Manning and David Nicholson
 %
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
@@ -81,7 +82,7 @@
 
 function [Fd, Fc, Fp, Deq,k] = fas(C,u10,S,T,slp,gas,param,rh)
 
-% if humidity is not provided, set to 0.8 for all values
+% if humidity is not provided, set to 1 for all values
 if nargin == 8
     if mean(rh) < 0 || mean(rh) > 1
         error('Relative humidity must be 0 <= rh <= 1');
