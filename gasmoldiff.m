@@ -25,7 +25,7 @@
 % AUTHOR:  David Nicholson : dnicholson@whoi.edu
 %
 % REFERENCE:
-%    He, Ne, Kr, Xe freshwater values from Jahne et al., 1987.
+%    He, Ne, Kr, Xe, CH4 freshwater values from Jahne et al., 1987.
 %       "Measurement of Diffusion Coeffients of Sparingly Soluble Gases in Water"
 %       J. Geophys. Res., 92(C10), 10767-10776.
 %    Ar freshwaters values are extrapolated from Jahne et al. 1987
@@ -83,6 +83,10 @@ elseif strcmpi(gas, 'Xe')
     [AEa] = [9.0070e-6 21610];
 elseif strcmpi(gas, 'N2')
     [AEa] = [3.4120e-6 18500];
+elseif strcmpi(gas, 'CH4')
+    [AEa] = [3.0470e-6 18360];
+elseif strcmpi(gas, 'H2')
+    [AEa] = [3.3380e-6 16060];
 elseif strcmpi(gas, 'CO2')
     % CO2 schmidt# formula from Wanninkhof (1992)
     Sc = 2073.1 - 125.62.*T + 3.6276.*T.^2 - 0.043219.*T.^3;

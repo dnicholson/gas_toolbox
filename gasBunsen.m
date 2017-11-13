@@ -42,8 +42,14 @@
 % Weiss, R. F., and B. A. Price (1980), Nitrous oxide solubility in water 
 %   and seawater, Mar. Chem., 8(4), 347?359, doi:10.1016/0304-4203(80)90024-9.
 %
+% CO2:
+% Weiss, R. F. 1974. Carbon dioxide in water and seawater: the solu-
+% bility of a non-ideal gas. Mar. Chem. 2:203-215 
+% doi:10.1016/0304-4203(74)90015-2. (in Wanninkhof 2014)
+%
 % He,Ne,Ar,Kr,Xe,N2,O2:
 % See references for individual gas solubility functions.
+%
 %
 % AUTHORS:-----------------------------------------------------------------
 % Cara Manning (cmanning@whoi.edu) Woods Hole Oceanographic Institution
@@ -74,7 +80,7 @@ Geq = gasmoleq(SP,pt,gas);
 beta = Geq.*(gasmolvol(gas)./1000)./(pdry.*gasmolfract(gas));
 
 % The following gases use fit coefs for beta directly
-elseif ismember(gasn,{'ch4','co','h2','ch4yamamato'})
+elseif ismember(gasn,{'ch4','co','h2','ch4yamamato','co2'})
     ufac = 1;  % unit conversion if needed
     switch gasn
         % These constants are refit to Yamamoto et al. 1976 found in Wiesenburg and
@@ -117,6 +123,14 @@ elseif ismember(gasn,{'ch4','co','h2','ch4yamamato'})
             B1 = -0.072909;
             B2 = 0.041674;
             B3 = -0.0064603;
+        case {'co2'}
+            A1 = -58.08931;
+            A2 = 90.5069;
+            A3 = 22.2940;
+            B1 = 0.027766;
+            B2 = -0.025888;
+            B3 = 0.0050578;
+            ufac = gasmolvol('CO2'); % convert from mol L-1 atm-1
     end
     TK = pt + gsw_T0;
     logB = A1 + A2.*(100./TK) + A3.*log(TK./100) + SP.*( B1 + B2.*(TK./100) ...
