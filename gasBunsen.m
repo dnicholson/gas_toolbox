@@ -80,7 +80,7 @@ Geq = gasmoleq(SP,pt,gas);
 beta = Geq.*(gasmolvol(gas)./1000)./(pdry.*gasmolfract(gas));
 
 % The following gases use fit coefs for beta directly
-elseif ismember(gasn,{'ch4','co','h2','ch4yamamato','co2'})
+elseif ismember(gasn,{'ch4','co','h2','ch4yamamato','co2','n2o'})
     ufac = 1;  % unit conversion if needed
     switch gasn
         % These constants are refit to Yamamoto et al. 1976 found in Wiesenburg and

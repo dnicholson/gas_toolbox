@@ -13,7 +13,7 @@
 % -------------------------------------------------------------------------
 % SP        Practical Salinity
 % pt        Potential temperature [degC]
-% pgasdry   gas fugacity [atm] if empty, assumes 1 atm total pressure with
+% pgas      gas fugacity [atm] if empty, assumes 1 atm total pressure with
 %               saturated water vapor presure
 % gas       gas string: He, Ne, Ar, Kr, Xe, O2 or N2
 %
@@ -32,14 +32,14 @@
 % Also see: gasmolfract.m, gasmoleq.m
 % =========================================================================
 
-function [sol] = gasmolsol(SP,pt,pgasdry,gas)
+function [sol] = gasmolsol(SP,pt,pgas,gas)
 
-if isempty(pgasdry)
+if isempty(pgas)
     soleq = gasmoleq(SP,pt,gas);
     [p_h2o] = vpress(SP,pt);
     % water vapour pressure correction
     sol = soleq./(gasmolfract(gas).*(1-p_h2o));
 else
-    sol = 1000.*pgasdry.*gasBunsen(SP,pt,gas)./gasmolvol(gas);
+    sol = 1000.*pgas.*gasBunsen(SP,pt,gas)./gasmolvol(gas);
 end
 
