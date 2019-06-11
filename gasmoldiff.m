@@ -16,7 +16,7 @@
 % INPUT:  (if S and T are not singular they must have same dimensions)
 %   S = salinity    [PSS-78]
 %   T = temperature [degree C]
-%   gas = 'He','Ne','Ar','Kr','Xe','N2','O2' or 'CO2'
+%   gas = 'He','He','Ne','Ar','Kr','Xe','N2','O2','CH4','N2O',or 'CO2'
 % 
 % OUTPUT:
 %   D = diffusion coefficient   [m^2/s] 
@@ -92,8 +92,16 @@ elseif strcmpi(gas, 'CO2')
     Sc = 2073.1 - 125.62.*T + 3.6276.*T.^2 - 0.043219.*T.^3;
     D = sw_visc(S,T,0)./Sc;
     return
+    
+elseif strcmpi(gas,'N2O')
+    % Wanninkhof (2014) 4th order polynomial
+    % fit using Wilke and Chang (1955) as adapted by Hayduk and Laudie (1974)
+    a = [2356.2; 166.38; 6.3952; 0.13422; 0.0011506];
+    Sc = a(1) - a(2) .* T + a(3) .* T.^2 - a(4) .* T.^3 + a(5) .* T.^4;
+    D = sw_visc(S,T,0)./Sc;
+    return
 else
-    error('Gas name must be Ne, O2, Ar, Kr, Xe, CO2 or N2');
+    error('Gas name must be He, Ne, O2, N2, Ar, Kr, Xe, CO2, CH4, N2O, or H2');
 end
 
 %freshwater diffusivity
