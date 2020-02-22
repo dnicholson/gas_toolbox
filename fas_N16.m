@@ -1,15 +1,15 @@
-% Function to calculate air-sea gas exchange flux using Nicholson 16
+%  Calculate air-sea gas exchange flux using Nicholson et al. (2016)
 % parameterization
 %
 % USAGE:-------------------------------------------------------------------
 %  
-% [Fd, Fc, Fp, Deq, k] = fas_N11(C,u10,S,T,slp,gas,rh)
-% [Fd, Fc, Fp, Deq, k] = fas_N11(0.01410,5,35,10,1,'Ar',0.9)
+% [Fd, Fc, Fp, Deq, k] = fas_N16(C,u10,S,T,slp,gas,rh)
+% [Fd, Fc, Fp, Deq, k] = fas_N16(0.01410,5,35,10,1,'Ar')
 %
-% Fd = -4.4860e-09
-% Fc = 1.9911e-10
-% Fp = 2.5989e-11
-% Deq = 9.3761e-04
+% Fd = -4.7749e-09
+% Fc = 1.9887e-10
+% Fp = 2.5957e-11
+% Deq = 9.3648e-04
 % k = 1.7365e-05
 %
 % DESCRIPTION:-------------------------------------------------------------
