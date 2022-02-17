@@ -1,4 +1,4 @@
-% fas_N11: Function to calculate air-sea gas exchange flux using Nicholson
+% fas_N11: Function to calculate air-sea gas exchange flux using Ito et al.
 % 2011 parameterization
 %
 % USAGE:-------------------------------------------------------------------
