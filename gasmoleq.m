@@ -91,9 +91,17 @@ elseif strcmpi(gasn, 'n2')
 elseif strcmpi(gasn, 'o2')
     sol_umolkg = gsw_O2sol_SP_pt(SP,pt);
 elseif strcmpi(gasn, 'n2o')
-    sol_umolkg = gsw_N2Osol_SP_pt(SP,pt);
+    % note: there is a bug in gsw_N2Osol_SP_pt, use N2Osol instead
+    % N2Osol currently assumes an N2O fugacity of 329e-9 atm unless
+    % specified as another value with the optional third argument
+    sol_umolkg = N2Osol(SP,pt);
+elseif strcmpi(gasn, 'ch4')
+    % CH4sol currently assumes a CH4 fugacity of 1940e-9 atm unless
+    % specified as another value with the optional third argument
+    sol_umolkg = CH4sol(SP,pt);
+    
 else
-    error('Gas name must be He, Ne, Ar, Kr, Xe, O2, N2O or N2');
+    error('Gas name must be He, Ne, Ar, Kr, Xe, O2, N2O, CH4, or N2');
 end
 
 % convert from micro-mol/kg to mol/m3
