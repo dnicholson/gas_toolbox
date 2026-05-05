@@ -5,7 +5,7 @@
 % vmol = gasmolvol(gas)
 %
 % INPUT:-------------------------------------------------------------------
-% gas       gas string: He, Ne, Ar, Kr, Xe, O2, or N2
+% gas       gas string: He, Ne, Ar, Kr, Xe, O2, N2, CO2, CH4, H2, or N2O
 %
 % REFERENCE:---------------------------------------------------------------
 % Dymond, J. H., Marsh, K. N., Wilhoit, R. C., & Wong, K. C. (2002). Virial

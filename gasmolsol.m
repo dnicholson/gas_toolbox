@@ -1,6 +1,6 @@
 % =========================================================================
 % GASMOLSOL.M - calculates Henry's Law solubility for a gas in equilibrium
-% with a atmosphere fugacity of 'pgasdry'
+% with a atmospheric fugacity of 'pgasdry'
 % in mol m-3 
 %
 % This is a wrapper function. See individual solubility functions for more
@@ -25,7 +25,7 @@
 % -------------------------------------------------------------------------
 % USAGE:
 % -------------------------------------------------------------------------
-% [KH_O2] = gasmolsol(35,20,'O2')
+% [KH_O2] = gasmolsol(35,20,1,'O2')
 % KH_O2 = 1.1293
 %
 % Author: David Nicholson dnicholson@whoi.edu

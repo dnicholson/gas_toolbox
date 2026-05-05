@@ -9,10 +9,11 @@
 % details.
 %
 % This function uses the GSW Toolbox solubility functions when available,
-% except for Ne. There was a bug in gsw_Nesol_SP_pt and gsw_Nesol, in
-% versions downloaded prior to Sept 23, 2015. Therefore, we provide a
-% correct solubility function to avoid errors for people with older
-% versions of the GSW Toolbox.
+% except for Ne and N2O. There was a bug in gsw_Nesol_SP_pt and gsw_Nesol,
+% in versions downloaded prior to Sept 23, 2015, and a bug in some versions
+% of gsw_N2Osol_SP_pt and gsw_N2Osol. Therefore, we provide a correct
+% solubility function to avoid errors for people with older versions of the
+% GSW Toolbox.
 %
 % -------------------------------------------------------------------------
 % USAGE:
@@ -51,7 +52,7 @@
 % -------------------------------------------------------------------------
 % LICENSE:
 % -------------------------------------------------------------------------
-% Copyright 2015 Cara Manning and David Nicholson 
+% Copyright 2015, 2026 Cara Manning and David Nicholson 
 %
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License, which 
@@ -91,8 +92,8 @@ elseif strcmpi(gasn, 'n2')
 elseif strcmpi(gasn, 'o2')
     sol_umolkg = gsw_O2sol_SP_pt(SP,pt);
 elseif strcmpi(gasn, 'n2o')
-    % note: there is a bug in gsw_N2Osol_SP_pt, use N2Osol instead
-    % N2Osol currently assumes an N2O fugacity of 329e-9 atm unless
+    % note: there is a bug in some versions of gsw_N2Osol_SP_pt, use N2Osol
+    % instead N2Osol currently assumes an N2O fugacity of 329e-9 atm unless
     % specified as another value with the optional third argument
     sol_umolkg = N2Osol(SP,pt);
 elseif strcmpi(gasn, 'ch4')
