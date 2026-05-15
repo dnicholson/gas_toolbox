@@ -6,7 +6,7 @@ The subdirectory weighted_flux contains functions for calculating time-weighted 
 Please see README_for_gas_toolbox.pdf for more details on the functions.
 
 CITATION:
-Manning, C.C.M. and D.P. Nicholson (2022). dnicholson/gas_toolbox: MATLAB code for calculating gas fluxes. Zenodo. https://doi.org/10.5281/zenodo.6126685
+Manning, C.C.M. and D.P. Nicholson (2026). dnicholson/gas_toolbox: MATLAB code for calculating gas fluxes. Zenodo. https://10.5281/zenodo.6126684
 
 If you use these functions for scientific research, please cite or acknowledge our GitHub repository, and also cite the references listed in the headers of the individual functions (e.g. for the specific gas exchange parameterization used).  
 
